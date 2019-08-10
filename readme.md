@@ -17,8 +17,8 @@ bcrypt : salting, keystretching 이 구현된 암호 알고리즘 - 사용자 �
 ```
 
 ## Source File
-+api.py - API 소스파일로 configuration, database entity, api logic, routing 으로 구성됨
-+test.py - test file
++ api.py - API 소스파일로 configuration, database entity, api logic, routing 으로 구성됨
++ test.py - test file
 
 
 ## Quick start
