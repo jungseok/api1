@@ -21,7 +21,7 @@ bcrypt : salting, keystretching 이 구현된 암호 알고리즘 - 사용자 �
 + test.py - test file
 
 
-## Quick start
+## How to Run
 1. 개발에 필요한 모듈을 설치합니다.
 ```
 pip3 install flask Flask-SQLAlchemy sqlite3 pandas PyJWT bcrypt
