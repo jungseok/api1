@@ -2,6 +2,7 @@
 사전과제 3. 주택 금융 서비스 API 개발
 ======================
 
+사양서 https://github.com/jungseok/api1/blob/master/서버개발_사전과제3_주택금융API개발_v.1.1.pdf
 MacOS, Python3.7 에서 테스트 되었습니다.
 
 ## Requirement
