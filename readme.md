@@ -15,8 +15,8 @@ bcrypt : salting, keystretching 이 구현된 암호 알고리즘 - 사용자 �
 ```
 
 ## Source File
-api.py - API 소스파일로 configuration, database entity, api logic, routing 으로 구성됨
-test.py - test file
++api.py - API 소스파일로 configuration, database entity, api logic, routing 으로 구성됨
++test.py - test file
 
 
 ## Quick start
@@ -37,63 +37,55 @@ python3 test.py
 
 [기본 문제 필수] 데이터 파일에서 각 레코드를 데이터베이스에 저장하는 API
 ```
-python3 test.py
+url: /signup
+method: POST
 ```
++파일은 서버에 저장되어 있다고 가정하고 업로드 기능은 구현하지 않음.
++파일에서 읽은 금융기관의 수를 리턴함
+
 [기본 문제 필수] 주택금융 공급 금융기관(은행) 목록을 출력하는 API
 ```
-python3 test.py
+url: /lists
+method: POST
 ```
 [기본 문제 필수] 년도별 각 금융기관의 지원금액 합계를 출력하는 API
 ```
-python3 test.py
+url: /annual_total
+method: POST
 ```
-[기본 문제 필수] 각년도별각기관의전체지원금액중에서가장큰금액의기관명을출력하는API
+[기본 문제 필수] 각 년도별 각 기관의 전체 지원금액 중에서 가장 큰 금액의 기관명을 출력하는 API
 ```
-python3 test.py
+url: /max_inst
+method: POST
 ```
 [기본 문제 필수] 전체 년도(2005 ~2016)에서 외환은행의 지원금액 평균 중에서 가장 작은 금액과 큰 금액을 출력하는 API
 ```
-python3 test.py
+url: /foreign
+method: POST
 ```
 [ 선택 문제 (옵션)] 특정 은행의 특정 달에 대해서 2018년도 해당 달에 금융지원 금액을 예측하는 API
 ```
-python3 test.py
-```
-Institution 에 "주택도시기금1)" 도 포함된 것으로 보았음.
-농협수협은 하나의 기관명으로 입력하여야 함.
-- 입력 값: ﻿주택도시기금1), ﻿국민은행, ﻿우리은행, ﻿신한은행, ﻿한국시티은행, ﻿하나은행, ﻿농협은행/수협은행, ﻿외환은행, ﻿기타은행
-
-signup 계정생성 API
-```
-url: 127.0.0.1:5000/signup
+url: /predict
 method: POST
-input:
-{
-    "username": "test13",
-    "password": "test33"
-}
-output:
-{
-  "token": "ccc"
-}
+```
++Institution 에 "주택도시기금1)" 도 포함된 것으로 보았음.
++농협수협은 하나의 기관명으로 입력하여야 함.
+ - 입력 값: ﻿주택도시기금1), ﻿국민은행, ﻿우리은행, ﻿신한은행, ﻿한국시티은행, ﻿하나은행, ﻿농협은행/수협은행, ﻿외환은행, ﻿기타은행
 
+[추가 제약사항 옵션] signup 계정생성 API
+```
+url: /signup
+method: POST
 ```
 [추가 제약사항 옵션] signin 로그인 API
 ```
-url: 127.0.0.1:5000/signin
+url: /signin
 method: POST
-input:
-{
-    "username": "test13",
-    "password": "test33"
-}
-output:
-{
-  "token": "ccc"
-}
 ```
 [추가 제약사항 옵션] refresh 토큰 재발급 API
 ```
+url: /refresh_token
+method: POST
 ```
 
 ## Postman documentation

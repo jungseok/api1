@@ -465,4 +465,4 @@ if __name__ == '__main__':
     else:
         #read_csv_file('서버개발_사전과제3_주택금융신용보증_금융기관별_공급현황.csv')
         #read_institutions()
-        print(predict("우리은행", 2))
+        print(predict_amt("우리은행", 2))
