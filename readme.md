@@ -39,7 +39,7 @@ python3 test.py
 
 [기본 문제 필수] 데이터 파일에서 각 레코드를 데이터베이스에 저장하는 API
 ```
-url: /signup
+url: /create
 method: POST
 ```
 + 파일은 서버에 저장되어 있다고 가정하고 업로드 기능은 구현하지 않음.
@@ -65,7 +65,7 @@ method: POST
 url: /foreign
 method: POST
 ```
-[ 선택 문제 (옵션)] 특정 은행의 특정 달에 대해서 2018년도 해당 달에 금융지원 금액을 예측하는 API
+[선택 문제 옵션] 특정 은행의 특정 달에 대해서 2018년도 해당 달에 금융지원 금액을 예측하는 API
 ```
 url: /predict
 method: POST
