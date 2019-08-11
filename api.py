@@ -248,6 +248,51 @@ def predict_amt(req_bankname, req_month):
 
     return json.dumps(ret, ensure_ascii=False)
 
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from statsmodels.tsa.arima_model import ARIMA
+def predict_amt_arima(req_bankname, req_month):
+    df = get_dataframe()
+    banks = json.loads(read_institutions())
+    ret = {}
+    ret["bank"] = "unknown"
+    ret["year"] = 2018
+    ret["month"] = req_month
+    ret["amount"] = 0
+
+    if req_bankname in banks.values():
+        ts = pd.DataFrame(df[req_bankname])
+        y = df['year']
+        m = df['month']
+        df['date'] = 1
+        ff = (lambda x: '%02d'%x)
+        tmp = df['year'].map(str)+df['month'].map(ff)+df['date'].map(ff)
+
+        ts['months'] = pd.to_datetime(tmp)
+        ts = ts.set_index('months')
+
+        diff_1 = ts.diff(periods=1).iloc[1:]
+        diff_1.plot()
+        plot_acf(diff_1)
+        plot_pacf(diff_1)
+        #plt.show()
+
+        model = ARIMA(ts, order=(0, 1, 1))
+        model_fit = model.fit(trend='nc', full_output=True, disp=-1)
+        #print(model_fit.summary())
+        model_fit.plot_predict()
+
+        fore = model_fit.forecast(steps=10)
+        print(fore[0][0])
+
+        code = ''
+        for r in db.session.query(Institution).filter_by(institute_name=req_bankname):
+            code = r.institute_code
+
+        ret["bank"] = code
+        ret["month"] = req_month
+        ret["amount"] = int(fore[0][0])
+
+    return json.dumps(ret, ensure_ascii=False)
 
 def foreign_avg():
     df = get_dataframe()
@@ -446,7 +491,7 @@ def predict():
             print(request.json)
             content = request.json
             print(content)
-            return predict_amt(content['bank'], content['month'])
+            return predict_amt_arima(content['bank'], content['month'])
         except Exception as e:
             return Response(status=401)
 
@@ -464,5 +509,6 @@ if __name__ == '__main__':
         app.run(debug=True)
     else:
         #read_csv_file('서버개발_사전과제3_주택금융신용보증_금융기관별_공급현황.csv')
-        #read_institutions()
-        print(predict_amt("우리은행", 2))
+        print(read_institutions())
+        print(predict_amt("기타은행", 2))
+        print(predict_amt_arima("기타은행", 2))
