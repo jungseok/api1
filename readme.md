@@ -11,7 +11,7 @@ MacOS, Python3.7 에서 테스트 완료
 Python3+
 Flask
 SQLAlchemy : Python ORM (Object Relational Mapping)
-Pandas : 데이터분석
+Pandas, ARIMA : 데이터분석
 PyJWT : JSON Web Token
 bcrypt : salting, keystretching 이 구현된 암호 알고리즘 - 사용자 암호 저장시 사용
 ```
