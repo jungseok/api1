@@ -11,7 +11,8 @@ MacOS, Python3.7 에서 테스트 완료
 Python3+
 Flask
 SQLAlchemy : Python ORM (Object Relational Mapping)
-Pandas, ARIMA : 데이터분석
+Pandas : 데이터분석
+statsmodels : ARIMA 시계열분석모델
 PyJWT : JSON Web Token
 bcrypt : salting, keystretching 이 구현된 암호 알고리즘 - 사용자 암호 저장시 사용
 ```
@@ -24,7 +25,7 @@ bcrypt : salting, keystretching 이 구현된 암호 알고리즘 - 사용자 �
 ## How to Run
 1. 개발에 필요한 모듈을 설치합니다.
 ```
-pip3 install flask Flask-SQLAlchemy sqlite3 pandas PyJWT bcrypt
+pip3 install flask Flask-SQLAlchemy sqlite3 pandas PyJWT bcrypt statsmodels
 ```
 2. Server start
 ```
